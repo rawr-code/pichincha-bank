@@ -21,11 +21,14 @@ export default StyleSheet.create({
         fontSize: 16,
         color: palette.black,
         opacity: 0.5,
+        width: "40%",
     },
     labelValue: {
         fontSize: 16,
         color: palette.black,
         fontWeight: "bold",
+        width: "60%",
+        textAlign: "right",
     },
     column: {
         marginTop: 28,

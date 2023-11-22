@@ -12,92 +12,27 @@ import styles from "./styles";
 import Button from "../../components/Button";
 import Layout from "../../components/Layout";
 import Input from "../../components/Input";
+import { productModels } from "../../models";
+import { FC } from "react";
 
-const DATA = [
-    {
-        id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-        title: "First Item",
-    },
-    {
-        id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-        title: "Second Item",
-    },
-    {
-        id: "58694a0f-3da1-471f-bd96-145571e29d72",
-        title: "Third Item",
-    },
-    {
-        id: "58694a0f-3da1-471f-bd96-145571e29d721",
-        title: "Third Item",
-    },
-    {
-        id: "58694a0f-3da1-471f-bd96-145571e29d722",
-        title: "Third Item",
-    },
-    {
-        id: "58694a0f-3da1-471f-bd96-145571e29d732",
-        title: "Third Item",
-    },
-    {
-        id: "58694a0f-3da1-471f-bd96-145571e29d742",
-        title: "Third Item",
-    },
-    {
-        id: "58694a0f-3da1-471f-bd96-145571e29d752",
-        title: "Third Item",
-    },
-    {
-        id: "58694a0f-3da1-471f-bd96-145571e29d7522",
-        title: "Third Item",
-    },
-    {
-        id: "58694a0f-3da1-471f-bd96-145571e229d752",
-        title: "Third Item",
-    },
-    {
-        id: "58694a0f-3da1-471f-bd96-145571e2129d752",
-        title: "Third Item",
-    },
-    {
-        id: "58694a0f-3da1-471f-bd296-145571e29d752",
-        title: "Third Item",
-    },
-    {
-        id: "58694a0f-3da1-471f-bd196-145571e29d752",
-        title: "Third Item",
-    },
-    {
-        id: "58694a0f-3da1-471f-bd963-145571e29d752",
-        title: "Third Item",
-    },
-    {
-        id: "58694a0f-3da1-471f-b1d96-145571e29d752",
-        title: "Third Item",
-    },
-    {
-        id: "58694a0f-3da1-471f-bd96-1451571e29d752",
-        title: "Third Item",
-    },
-    {
-        id: "58694a0f-3da1-471f-bd96-145571e129d752",
-        title: "Third Item",
-    },
-];
+interface HomeProps {
+    data: productModels.Product[];
+}
 
-const Home = () => {
+const Home: FC<HomeProps> = ({ data }) => {
     const router = useRouter();
 
     return (
         <Layout>
             <View style={styles.container}>
                 <FlatList
-                    data={DATA}
+                    data={data}
                     renderItem={({ item, index }) => (
                         <Pressable
                             style={[
                                 styles.card,
                                 index === 0 && styles.first,
-                                index === DATA.length - 1 && styles.last,
+                                index === data.length - 1 && styles.last,
                             ]}
                             onPress={() => {
                                 router.push({
@@ -107,9 +42,11 @@ const Home = () => {
                             }}
                         >
                             <View style={{ flex: 1 }}>
-                                <Text style={styles.cardTitle}>Name</Text>
+                                <Text style={styles.cardTitle}>
+                                    {item.name}
+                                </Text>
                                 <Text style={styles.cardLabel}>
-                                    ID: {item.title}
+                                    ID: {item.id}
                                 </Text>
                             </View>
                             <Ionicons
@@ -134,7 +71,6 @@ const Home = () => {
                         onPress={() => {
                             router.push({
                                 pathname: "/form",
-                                params: { id: "bacon" },
                             });
                         }}
                     />

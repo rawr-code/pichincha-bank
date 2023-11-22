@@ -8,6 +8,7 @@ module.exports = {
         "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended",
         "prettier",
+        "plugin:@tanstack/eslint-plugin-query/recommended",
     ],
     overrides: [],
     parser: "@typescript-eslint/parser",
@@ -15,14 +16,13 @@ module.exports = {
         ecmaVersion: "latest",
         sourceType: "module",
     },
-    plugins: ["react", "@typescript-eslint"],
+    plugins: ["react", "@typescript-eslint", "@tanstack/query"],
     settings: {
         react: {
             version: "detect",
         },
     },
     rules: {
-        indent: ["error", 4],
         "linebreak-style": ["error", "unix"],
         semi: ["error", "always"],
         "react/jsx-uses-react": "off",

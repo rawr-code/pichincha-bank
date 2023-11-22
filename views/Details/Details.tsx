@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image, ScrollView } from "react-native";
 import { useRouter } from "expo-router";
 
 // Styles
@@ -10,13 +10,21 @@ import Button from "../../components/Button";
 import Layout from "../../components/Layout";
 import Modal from "../../components/Modal";
 
+// Models
+import { productModels } from "../../models";
+
+// Utils
+import { formatDate } from "../../utils";
+import { useProducts } from "../../hooks";
+
 interface DetailsProps {
-    id?: string;
+    product: productModels.Product;
 }
 
-const Details: FC<DetailsProps> = ({ id }) => {
+const Details: FC<DetailsProps> = ({ product }) => {
     const router = useRouter();
     const [isOpen, setIsOpen] = useState(false);
+    const { mutateAsync } = useProducts.useDeleteProductId();
 
     const toggleSheet = () => {
         // setIsOpen(!isOpen);
@@ -27,31 +35,36 @@ const Details: FC<DetailsProps> = ({ id }) => {
         <>
             <Layout>
                 <View style={styles.container}>
-                    <View style={styles.body}>
-                        <Text style={styles.title}>ID: {id}</Text>
+                    <ScrollView style={styles.body}>
+                        <Text style={styles.title}>ID: {product.id}</Text>
                         <Text style={styles.label}>Información extra</Text>
 
                         <View style={styles.column}>
                             <View style={styles.row}>
                                 <Text style={styles.label}>Nombre</Text>
                                 <Text style={styles.labelValue}>
-                                    Emmanuel Villegas
+                                    {product.name}
                                 </Text>
                             </View>
                             <View style={styles.row}>
                                 <Text style={styles.label}>Descripción</Text>
-                                <Text style={styles.labelValue}>Visa</Text>
+                                <Text style={styles.labelValue}>
+                                    {product.description}
+                                </Text>
                             </View>
                             <View style={styles.row}>
                                 <Text style={styles.label}>Logo</Text>
-                                <View style={{ padding: 0, width: "80%" }}>
-                                    <View
+                                <View style={{ padding: 0, width: "100%" }}>
+                                    <Image
                                         style={{
-                                            width: "100%",
+                                            width: "60%",
                                             height: 200,
-                                            backgroundColor: "black",
                                         }}
-                                    ></View>
+                                        source={{
+                                            uri: product.logo,
+                                        }}
+                                        resizeMode="contain"
+                                    />
                                 </View>
                             </View>
                             <View style={styles.row}>
@@ -59,25 +72,25 @@ const Details: FC<DetailsProps> = ({ id }) => {
                                     Fecha liberación
                                 </Text>
                                 <Text style={styles.labelValue}>
-                                    12-08-1997
+                                    {formatDate(product.date_release)}
                                 </Text>
                             </View>
                             <View style={styles.row}>
                                 <Text style={styles.label}>Fecha revisión</Text>
                                 <Text style={styles.labelValue}>
-                                    12-08-2023
+                                    {formatDate(product.date_revision)}
                                 </Text>
                             </View>
                         </View>
-                    </View>
+                    </ScrollView>
                     <View style={styles.actions}>
                         <Button
                             text="Editar"
                             bgColor="grey"
                             onPress={() => {
-                                router.push({
-                                    pathname: "/form]",
-                                    params: { id: "bacon" },
+                                router.replace({
+                                    pathname: "/form",
+                                    params: { id: product.id },
                                 });
                             }}
                         />
@@ -110,10 +123,10 @@ const Details: FC<DetailsProps> = ({ id }) => {
                 <View style={styles.actions}>
                     <Button
                         text="Confirmar"
-                        onPress={() => {
-                            router.push({
-                                pathname: "/blog/[id]",
-                                params: { id: "bacon" },
+                        onPress={async () => {
+                            await mutateAsync(product.id);
+                            router.replace({
+                                pathname: "/",
                             });
                         }}
                     />
