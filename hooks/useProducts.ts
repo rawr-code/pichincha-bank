@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 // Models
 import { productModels } from "../models";
+
 // Services
 import { productsService } from "../services";
 
@@ -11,11 +12,8 @@ export const useGetProducts = () =>
     useQuery({
         queryKey: [KEY],
         queryFn: productsService.getProducts(),
-        refetchInterval: 1000,
+        refetchInterval: 5000,
         refetchIntervalInBackground: true,
-        refetchOnMount: true,
-        refetchOnReconnect: true,
-        refetchOnWindowFocus: true,
     });
 
 export const useGetPreviousProductById = (id: string) => {
@@ -25,21 +23,24 @@ export const useGetPreviousProductById = (id: string) => {
     return qData?.find((p) => p.id === id);
 };
 
-export const useVerifyProductId = (id: string) =>
-    useQuery({
-        queryKey: [KEY, id],
-        queryFn: productsService.verifyProductId(id),
-    });
-
-export const useCreateProduct = () =>
-    useMutation({
+export const useCreateProduct = () => {
+    const queryClient = useQueryClient();
+    return useMutation({
         mutationFn: (product: productModels.Product) => {
             return productsService.createProduct(product);
         },
-    });
+        onSuccess: (product) => {
+            const prevData =
+                queryClient.getQueryData<productModels.Product[]>([KEY]) || [];
 
-export const useUpdateProduct = () =>
-    useMutation({
+            queryClient.setQueryData([KEY], [...prevData, product]);
+        },
+    });
+};
+
+export const useUpdateProduct = () => {
+    const queryClient = useQueryClient();
+    return useMutation({
         mutationFn: ({
             id,
             product,
@@ -49,7 +50,22 @@ export const useUpdateProduct = () =>
         }) => {
             return productsService.updateProductId(id, product);
         },
+        onSuccess: (product) => {
+            const prevData = queryClient.getQueryData<productModels.Product[]>([
+                KEY,
+            ]);
+
+            const updateData = prevData?.map((p) => {
+                if (p.id === product.id) {
+                    return product;
+                }
+                return p;
+            });
+
+            queryClient.setQueryData([KEY], updateData);
+        },
     });
+};
 
 export const useDeleteProductId = () =>
     useMutation({

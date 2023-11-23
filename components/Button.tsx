@@ -9,6 +9,7 @@ interface ButtonProps {
     textColor?: Theme;
     bgColor?: Theme;
     onPress: () => void;
+    disabled?: boolean;
 }
 
 const Button: FC<ButtonProps> = ({
@@ -16,12 +17,14 @@ const Button: FC<ButtonProps> = ({
     textColor = "black",
     bgColor = "primary",
     onPress,
+    disabled,
 }) => {
     return (
         <Pressable
             style={[styles.container, { backgroundColor: palette[bgColor] }]}
-            onPress={onPress}
+            onPress={disabled ? null : onPress}
             testID={`Button-${text}`}
+            disabled={disabled}
         >
             <Text style={[styles.text, { color: palette[textColor] }]}>
                 {text}

@@ -1,8 +1,7 @@
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import { View, ScrollView, Text } from "react-native";
 import { Formik } from "formik";
-import * as Yup from "yup";
-import { addDays, addYears, parse } from "date-fns";
+import { addDays, addYears } from "date-fns";
 
 // Styles
 import styles from "./styles";
@@ -18,85 +17,41 @@ import { productModels } from "../../models";
 // Utils
 import { formatDate } from "../../utils";
 
+// Schema
+import validationSchema from "./validationSchema";
+
 interface FormProps {
     product?: productModels.Product;
     onSubmit: (product: productModels.Product) => void;
 }
 
 const Form: FC<FormProps> = ({ product, onSubmit }) => {
-    const FormSchema = Yup.object().shape({
-        id: Yup.string()
-            .min(3, "Requiere minimo 3 caracteres")
-            .required("Este campo es requerido"),
-        name: Yup.string()
-            .min(2, "Requiere minimo 2 caracteres")
-            .required("Este campo es requerido"),
-        description: Yup.string()
-            .min(5, "Requiere minimo 5 caracteres")
-            .required("Este campo es requerido"),
-        logo: Yup.string()
-            .min(5, "Requiere minimo 5 caracteres")
-            .required("Este campo es requerido"),
-        date_release: Yup.date()
-            .transform(function (value, originalValue) {
-                if (this.isType(value)) {
-                    return value;
-                }
-                const result = parse(
-                    originalValue,
-                    "yyyy.MM.dd",
-                    product ? new Date(product?.date_release) : new Date()
-                );
-                return result;
-            })
-            .typeError("Introduzca una fecha valida")
-            .required("Este campo es requerido")
-            .min(
-                formatDate(
-                    product ? new Date(product?.date_release) : new Date()
-                ),
-                "Debe ser una fecha mayor o igual a la de hoy"
-            ),
-        date_revision: Yup.date()
-            .transform(function (value, originalValue) {
-                if (this.isType(value)) {
-                    return value;
-                }
-                const result = parse(
-                    originalValue,
-                    "yyyy.MM.dd",
-                    product ? new Date(product?.date_revision) : new Date()
-                );
-                return result;
-            })
-            .typeError("Introduzca una fecha valida")
-            .required("Este campo es requerido")
-            .min(
-                formatDate(
-                    product ? new Date(product?.date_revision) : new Date()
-                ),
-                "Debe ser un año mayor a la fecha de revision"
-            ),
-    });
-
     const handleSubmit = (values: productModels.Product) => {
         onSubmit(values);
     };
+
+    const initialState = useMemo(() => {
+        return {
+            id: product?.id || "",
+            name: product?.name || "",
+            description: product?.description || "",
+            logo: product?.logo || "",
+            date_release: formatDate(product?.date_release),
+            date_revision: formatDate(product?.date_revision),
+        };
+    }, [product]);
+
+    const formSchema = useMemo(() => {
+        return validationSchema(product);
+    }, [product]);
 
     return (
         <Layout>
             <Formik
                 validateOnChange={false}
                 validateOnBlur={false}
-                initialValues={{
-                    id: product?.id || "",
-                    name: product?.name || "",
-                    description: product?.description || "",
-                    logo: product?.logo || "",
-                    date_release: formatDate(product?.date_release),
-                    date_revision: formatDate(product?.date_revision),
-                }}
-                validationSchema={FormSchema}
+                initialValues={initialState}
+                validationSchema={formSchema}
                 onSubmit={handleSubmit}
             >
                 {({
@@ -106,6 +61,7 @@ const Form: FC<FormProps> = ({ product, onSubmit }) => {
                     resetForm,
                     values,
                     errors,
+                    isSubmitting,
                 }) => (
                     <View style={styles.container}>
                         <ScrollView
@@ -166,7 +122,11 @@ const Form: FC<FormProps> = ({ product, onSubmit }) => {
                             </View>
                         </ScrollView>
                         <View style={[styles.content, styles.actions]}>
-                            <Button text="Enviar" onPress={handleSubmit} />
+                            <Button
+                                text="Enviar"
+                                onPress={handleSubmit}
+                                disabled={isSubmitting}
+                            />
                             <Button
                                 text="Reiniciar"
                                 bgColor="grey"

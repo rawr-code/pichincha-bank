@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import { View, Text, FlatList, Pressable } from "react-native";
 import { useRouter } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -19,23 +19,40 @@ import { productModels } from "../../models";
 
 interface HomeProps {
     data: productModels.Product[];
+    isLoading: boolean;
 }
 
-const Home: FC<HomeProps> = ({ data }) => {
+const Home: FC<HomeProps> = ({ data, isLoading }) => {
     const router = useRouter();
+
+    const listData = useMemo(() => {
+        const skeleton = {
+            id: "",
+            name: "",
+            description: "",
+            logo: "",
+            date_release: "",
+            date_revision: "",
+        };
+        const skeletonData: productModels.Product[] = Array(10).fill(skeleton);
+
+        return isLoading ? skeletonData : data;
+    }, [data, isLoading]);
 
     return (
         <Layout>
             <View style={styles.container} testID="Container">
                 <FlatList
                     testID="List"
-                    data={data}
+                    data={listData}
                     renderItem={({ item, index }) => (
                         <Pressable
                             style={[
                                 styles.card,
                                 index === 0 && styles.first,
-                                index === data.length - 1 && styles.last,
+                                (listData.length == 0 ||
+                                    index === listData.length - 1) &&
+                                    styles.last,
                             ]}
                             onPress={() => {
                                 router.push({
@@ -44,14 +61,39 @@ const Home: FC<HomeProps> = ({ data }) => {
                                 });
                             }}
                             testID={item.id}
+                            disabled={!item.id.length}
                         >
-                            <View style={{ flex: 1 }}>
-                                <Text style={styles.cardTitle}>
-                                    {item.name}
-                                </Text>
-                                <Text style={styles.cardLabel}>
-                                    ID: {item.id}
-                                </Text>
+                            <View style={{ flex: 1, rowGap: 8 }}>
+                                {item.name.length ? (
+                                    <Text style={styles.cardTitle}>
+                                        {item.name}
+                                    </Text>
+                                ) : (
+                                    <View
+                                        style={{
+                                            height: 16,
+                                            width: "60%",
+                                            backgroundColor: "grey",
+                                            borderRadius: 4,
+                                            opacity: 0.5,
+                                        }}
+                                    />
+                                )}
+                                {item.id.length ? (
+                                    <Text style={styles.cardLabel}>
+                                        ID: {item.id}
+                                    </Text>
+                                ) : (
+                                    <View
+                                        style={{
+                                            height: 12,
+                                            width: "40%",
+                                            backgroundColor: "grey",
+                                            borderRadius: 4,
+                                            opacity: 0.5,
+                                        }}
+                                    />
+                                )}
                             </View>
                             <Ionicons
                                 name="chevron-forward"
@@ -60,7 +102,7 @@ const Home: FC<HomeProps> = ({ data }) => {
                             />
                         </Pressable>
                     )}
-                    keyExtractor={(item) => item.id}
+                    keyExtractor={(item, index) => item.id || `id-${index}`}
                     stickyHeaderIndices={[0]}
                     contentContainerStyle={styles.list}
                     ListHeaderComponent={
@@ -77,11 +119,7 @@ const Home: FC<HomeProps> = ({ data }) => {
                 <View style={styles.actions} testID="Submit">
                     <Button
                         text="Agregar"
-                        onPress={() => {
-                            router.push({
-                                pathname: "/form",
-                            });
-                        }}
+                        onPress={() => router.push("/form")}
                     />
                 </View>
             </View>

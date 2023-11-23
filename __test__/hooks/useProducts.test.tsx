@@ -29,15 +29,6 @@ describe("useProducts", () => {
         );
         await waitFor(() => expect(result.current).toBe(undefined));
     });
-    it("useVerifyProductId ", async () => {
-        const { result } = renderHook(
-            () => useProducts.useVerifyProductId(products[0].id),
-            {
-                wrapper,
-            }
-        );
-        await waitFor(() => expect(result.current.isSuccess).toBe(true));
-    });
     it("useCreateProduct ", async () => {
         const { result } = renderHook(useProducts.useCreateProduct, {
             wrapper,

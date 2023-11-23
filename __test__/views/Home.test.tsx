@@ -18,7 +18,7 @@ let component: RenderResult;
 
 describe("<Home />", () => {
     beforeEach(() => {
-        component = render(<Home data={products} />);
+        component = render(<Home data={products} isLoading={false} />);
     });
 
     it("renders correctly", () => {

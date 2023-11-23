@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1700708931453" clover="3.2.0">
-  <project timestamp="1700708931453" name="All files">
-    <metrics statements="81" coveredstatements="76" conditionals="41" coveredconditionals="32" methods="34" coveredmethods="33" elements="156" coveredelements="141" complexity="0" loc="81" ncloc="81" packages="8" files="20" classes="20"/>
+<coverage generated="1700756929953" clover="3.2.0">
+  <project timestamp="1700756929953" name="All files">
+    <metrics statements="100" coveredstatements="91" conditionals="56" coveredconditionals="41" methods="40" coveredmethods="37" elements="196" coveredelements="169" complexity="0" loc="100" ncloc="100" packages="8" files="21" classes="21"/>
     <package name="app">
       <metrics statements="2" coveredstatements="2" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="index.tsx" path="C:\Projects\pichincha-bank\app\index.tsx">
@@ -11,12 +11,12 @@
       </file>
     </package>
     <package name="components">
-      <metrics statements="14" coveredstatements="14" conditionals="12" coveredconditionals="12" methods="4" coveredmethods="4"/>
+      <metrics statements="14" coveredstatements="14" conditionals="14" coveredconditionals="13" methods="4" coveredmethods="4"/>
       <file name="Button.tsx" path="C:\Projects\pichincha-bank\components\Button.tsx">
-        <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="14" count="4" type="stmt"/>
-        <line num="20" count="9" type="stmt"/>
-        <line num="35" count="4" type="stmt"/>
+        <metrics statements="3" coveredstatements="3" conditionals="4" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="22" count="9" type="stmt"/>
+        <line num="38" count="4" type="stmt"/>
       </file>
       <file name="Input.tsx" path="C:\Projects\pichincha-bank\components\Input.tsx">
         <metrics statements="3" coveredstatements="3" conditionals="8" coveredconditionals="8" methods="1" coveredmethods="1"/>
@@ -40,58 +40,66 @@
       </file>
     </package>
     <package name="hooks">
-      <metrics statements="18" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="10"/>
+      <metrics statements="26" coveredstatements="26" conditionals="4" coveredconditionals="3" methods="12" coveredmethods="12"/>
       <file name="index.ts" path="C:\Projects\pichincha-bank\hooks\index.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
       <file name="useProducts.ts" path="C:\Projects\pichincha-bank\hooks\useProducts.ts">
-        <metrics statements="18" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="10"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="2" type="stmt"/>
+        <metrics statements="26" coveredstatements="26" conditionals="4" coveredconditionals="3" methods="12" coveredmethods="12"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="25" count="2" type="stmt"/>
-        <line num="28" count="1" type="stmt"/>
-        <line num="29" count="2" type="stmt"/>
-        <line num="34" count="1" type="stmt"/>
-        <line num="35" count="3" type="stmt"/>
-        <line num="37" count="1" type="stmt"/>
+        <line num="23" count="3" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="3" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="34" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="36" count="1" type="stmt"/>
         <line num="41" count="1" type="stmt"/>
         <line num="42" count="3" type="stmt"/>
-        <line num="50" count="1" type="stmt"/>
+        <line num="43" count="3" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
         <line num="54" count="1" type="stmt"/>
-        <line num="55" count="3" type="stmt"/>
-        <line num="57" count="1" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="59" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="60" count="1" type="stmt"/>
+        <line num="62" count="3" type="stmt"/>
+        <line num="65" count="1" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="71" count="3" type="stmt"/>
+        <line num="73" count="1" type="stmt"/>
       </file>
     </package>
     <package name="services">
-      <metrics statements="16" coveredstatements="16" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7"/>
+      <metrics statements="16" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="5"/>
       <file name="index.ts" path="C:\Projects\pichincha-bank\services\index.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
       <file name="products.service.ts" path="C:\Projects\pichincha-bank\services\products.service.ts">
-        <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7"/>
+        <metrics statements="15" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="5"/>
         <line num="9" count="2" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
         <line num="17" count="2" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="27" count="1" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
         <line num="33" count="1" type="stmt"/>
-        <line num="36" count="1" type="stmt"/>
+        <line num="36" count="2" type="stmt"/>
         <line num="40" count="1" type="stmt"/>
-        <line num="46" count="1" type="stmt"/>
-        <line num="49" count="1" type="stmt"/>
         <line num="50" count="1" type="stmt"/>
-        <line num="56" count="1" type="stmt"/>
+        <line num="53" count="2" type="stmt"/>
+        <line num="54" count="1" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
       </file>
       <file name="urls.ts" path="C:\Projects\pichincha-bank\services\urls.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
       </file>
     </package>
     <package name="theme">
@@ -123,23 +131,18 @@
       </file>
     </package>
     <package name="views.Form">
-      <metrics statements="14" coveredstatements="9" conditionals="20" coveredconditionals="12" methods="5" coveredmethods="4"/>
+      <metrics statements="21" coveredstatements="14" conditionals="20" coveredconditionals="12" methods="9" coveredmethods="7"/>
       <file name="Form.tsx" path="C:\Projects\pichincha-bank\views\Form\Form.tsx">
-        <metrics statements="14" coveredstatements="9" conditionals="20" coveredconditionals="12" methods="5" coveredmethods="4"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="27" count="1" type="stmt"/>
-        <line num="42" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="43" count="1" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="62" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="63" count="1" type="stmt"/>
-        <line num="65" count="0" type="stmt"/>
-        <line num="70" count="0" type="stmt"/>
-        <line num="82" count="1" type="stmt"/>
-        <line num="83" count="0" type="stmt"/>
-        <line num="86" count="1" type="stmt"/>
-        <line num="110" count="1" type="stmt"/>
+        <metrics statements="9" coveredstatements="8" conditionals="8" coveredconditionals="8" methods="5" coveredmethods="4"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="66" count="1" type="stmt"/>
       </file>
       <file name="index.ts" path="C:\Projects\pichincha-bank\views\Form\index.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -147,18 +150,37 @@
       <file name="styles.ts" path="C:\Projects\pichincha-bank\views\Form\styles.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
+      <file name="validationSchema.ts" path="C:\Projects\pichincha-bank\views\Form\validationSchema.ts">
+        <metrics statements="12" coveredstatements="6" conditionals="12" coveredconditionals="4" methods="4" coveredmethods="3"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="35" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="55" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+      </file>
     </package>
     <package name="views.Home">
-      <metrics statements="7" coveredstatements="7" conditionals="4" coveredconditionals="4" methods="5" coveredmethods="5"/>
+      <metrics statements="11" coveredstatements="11" conditionals="13" coveredconditionals="9" methods="6" coveredmethods="6"/>
       <file name="Home.tsx" path="C:\Projects\pichincha-bank\views\Home\Home.tsx">
-        <metrics statements="7" coveredstatements="7" conditionals="4" coveredconditionals="4" methods="5" coveredmethods="5"/>
-        <line num="24" count="2" type="stmt"/>
-        <line num="25" count="6" type="stmt"/>
-        <line num="27" count="6" type="stmt"/>
-        <line num="34" count="10" type="stmt"/>
-        <line num="41" count="2" type="stmt"/>
-        <line num="63" count="15" type="stmt"/>
-        <line num="81" count="1" type="stmt"/>
+        <metrics statements="11" coveredstatements="11" conditionals="13" coveredconditionals="9" methods="6" coveredmethods="6"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="26" count="6" type="stmt"/>
+        <line num="28" count="6" type="stmt"/>
+        <line num="29" count="6" type="stmt"/>
+        <line num="37" count="6" type="stmt"/>
+        <line num="39" count="6" type="cond" truecount="1" falsecount="1"/>
+        <line num="42" count="6" type="stmt"/>
+        <line num="49" count="10" type="stmt"/>
+        <line num="58" count="2" type="stmt"/>
+        <line num="105" count="15" type="cond" truecount="1" falsecount="1"/>
+        <line num="122" count="1" type="stmt"/>
       </file>
       <file name="index.ts" path="C:\Projects\pichincha-bank\views\Home\index.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>

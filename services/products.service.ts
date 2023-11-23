@@ -14,7 +14,7 @@ export const getProducts = () => async () => {
     return data;
 };
 
-export const verifyProductId = (id: string) => async () => {
+export const verifyProductId = async (id: string) => {
     const { data } = await fetcher.get<boolean>(urls.PRODUCTS.verify, {
         params: {
             id,
@@ -37,11 +37,15 @@ export const updateProductId = async (
     id: string,
     product: productModels.Product
 ) => {
-    const { data } = await fetcher.put<string>(urls.PRODUCTS.delete, product, {
-        params: {
-            id,
-        },
-    });
+    const { data } = await fetcher.put<productModels.Product>(
+        urls.PRODUCTS.delete,
+        product,
+        {
+            params: {
+                id,
+            },
+        }
+    );
 
     return data;
 };

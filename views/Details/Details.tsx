@@ -88,7 +88,7 @@ const Details: FC<DetailsProps> = ({ product }) => {
                             text="Editar"
                             bgColor="grey"
                             onPress={() => {
-                                router.replace({
+                                router.push({
                                     pathname: "/form",
                                     params: { id: product.id },
                                 });

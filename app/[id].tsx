@@ -12,35 +12,11 @@ import Button from "../components/Button";
 
 export default function Page() {
     const { id = "" } = useLocalSearchParams<{ id: string }>();
-    const { data: existID = false, isLoading } =
-        useProducts.useVerifyProductId(id);
 
     const data = useProducts.useGetPreviousProductById(id);
     const router = useRouter();
 
-    if (isLoading) {
-        return (
-            <View
-                style={{
-                    flex: 1,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    backgroundColor: "white",
-                }}
-            >
-                <Text
-                    style={{
-                        fontSize: 28,
-                        fontWeight: "bold",
-                    }}
-                >
-                    Verificando...
-                </Text>
-            </View>
-        );
-    }
-
-    if (!existID || !data) {
+    if (!id.length || !data) {
         return (
             <View
                 style={{
