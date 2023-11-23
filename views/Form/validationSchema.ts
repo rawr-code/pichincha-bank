@@ -18,6 +18,7 @@ const validationSchema = (product?: productModels.Product) =>
             .max(10, "Debe ser maximo 10 caracteres")
             .required("Este campo es requerido")
             .test("validar id", "Este id ya esta en uso", async (id) => {
+                if (product?.id) return true;
                 const res = await productsService.verifyProductId(id);
                 return !res;
             }),
