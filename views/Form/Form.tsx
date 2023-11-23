@@ -79,6 +79,10 @@ const Form: FC<FormProps> = ({ product, onSubmit }) => {
             ),
     });
 
+    const handleSubmit = (values: productModels.Product) => {
+        onSubmit(values);
+    };
+
     return (
         <Layout>
             <Formik
@@ -93,7 +97,7 @@ const Form: FC<FormProps> = ({ product, onSubmit }) => {
                     date_revision: formatDate(product?.date_revision),
                 }}
                 validationSchema={FormSchema}
-                onSubmit={(values) => onSubmit(values)}
+                onSubmit={handleSubmit}
             >
                 {({
                     handleChange,

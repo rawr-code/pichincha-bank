@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getUrlHost = (enviroment?: string) => {
+export const getUrlHost = (enviroment?: string) => {
     if (!enviroment) {
         const err = new Error("Enviroment API_URL no setted");
         throw err;

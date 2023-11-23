@@ -22,6 +22,7 @@ interface ModalProps {
 
 const Modal: FC<ModalProps> = ({ open, onToggle, children }) => {
     if (!open) return null;
+
     return (
         <>
             <AnimatedPressable
@@ -29,14 +30,16 @@ const Modal: FC<ModalProps> = ({ open, onToggle, children }) => {
                 onPress={onToggle}
                 entering={FadeIn}
                 exiting={FadeOut}
+                testID="Backdrop"
             />
             <Animated.View
                 style={styles.sheet}
                 entering={SlideInDown.springify().damping(15)}
                 exiting={SlideOutDown}
+                testID="Sheet"
             >
                 <View style={styles.actions}>
-                    <Pressable onPress={onToggle}>
+                    <Pressable onPress={onToggle} testID="Close-button">
                         <Ionicons
                             name="close-sharp"
                             size={28}

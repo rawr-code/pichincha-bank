@@ -1,0 +1,18 @@
+[
+    {
+        "id": "trj-crd01",
+        "name": "Juan",
+        "description": "Primer post",
+        "logo": "https://www.copaair.com/assets/Banco-General-Signature.png",
+        "date_release": "2023-11-24T05:00:00.000+00:00",
+        "date_revision": "2024-11-24T05:00:00.000+00:00"
+    },
+    {
+        "id": "Huhu123",
+        "name": "Master q",
+        "description": "Para compras online ",
+        "logo": "https://www.cibc.com/content/dam/global-assets/card-art/credit-cards/aventura-cards/cibc-aventura-visa-infinite-card/cibc-visa-aventura-infinite-en.png/_jcr_content/renditions/cq5dam.web.1280.1280.png",
+        "date_release": "2023-11-10T00:00:00.000+00:00",
+        "date_revision": "2024-11-11T00:00:00.000+00:00"
+    }
+]

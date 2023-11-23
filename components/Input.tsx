@@ -25,7 +25,11 @@ const Input: FC<InputProps> = ({
 }) => {
     return (
         <View style={styles.container}>
-            {label ? <Text style={styles.labe}>{label}</Text> : null}
+            {label ? (
+                <Text style={styles.label} testID="Label-input">
+                    {label}
+                </Text>
+            ) : null}
             <View
                 style={[
                     styles.inputWrapper,
@@ -34,6 +38,7 @@ const Input: FC<InputProps> = ({
                 ]}
             >
                 <TextInput
+                    testID="Input-input"
                     style={styles.input}
                     placeholder={placeholder}
                     cursorColor={palette.black}
@@ -44,7 +49,11 @@ const Input: FC<InputProps> = ({
                     onBlur={onBlur}
                 />
             </View>
-            {error ? <Text style={styles.error}>{error}</Text> : null}
+            {error ? (
+                <Text style={styles.error} testID="Error-input">
+                    {error}
+                </Text>
+            ) : null}
         </View>
     );
 };
@@ -55,7 +64,7 @@ const styles = StyleSheet.create({
     container: {
         rowGap: 8,
     },
-    labe: {
+    label: {
         fontWeight: "bold",
         color: palette.black,
     },

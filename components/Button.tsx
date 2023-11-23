@@ -21,6 +21,7 @@ const Button: FC<ButtonProps> = ({
         <Pressable
             style={[styles.container, { backgroundColor: palette[bgColor] }]}
             onPress={onPress}
+            testID={`Button-${text}`}
         >
             <Text style={[styles.text, { color: palette[textColor] }]}>
                 {text}

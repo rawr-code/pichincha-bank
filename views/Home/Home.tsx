@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { View, Text, FlatList, Pressable } from "react-native";
 import { useRouter } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -12,8 +13,9 @@ import styles from "./styles";
 import Button from "../../components/Button";
 import Layout from "../../components/Layout";
 import Input from "../../components/Input";
+
+// Models
 import { productModels } from "../../models";
-import { FC } from "react";
 
 interface HomeProps {
     data: productModels.Product[];
@@ -24,8 +26,9 @@ const Home: FC<HomeProps> = ({ data }) => {
 
     return (
         <Layout>
-            <View style={styles.container}>
+            <View style={styles.container} testID="Container">
                 <FlatList
+                    testID="List"
                     data={data}
                     renderItem={({ item, index }) => (
                         <Pressable
@@ -40,6 +43,7 @@ const Home: FC<HomeProps> = ({ data }) => {
                                     params: { id: item.id },
                                 });
                             }}
+                            testID={item.id}
                         >
                             <View style={{ flex: 1 }}>
                                 <Text style={styles.cardTitle}>
@@ -60,12 +64,17 @@ const Home: FC<HomeProps> = ({ data }) => {
                     stickyHeaderIndices={[0]}
                     contentContainerStyle={styles.list}
                     ListHeaderComponent={
-                        <View style={styles.header}>
+                        <View style={styles.header} testID="Header">
                             <Input placeholder="Search..." />
                         </View>
                     }
+                    ListEmptyComponent={
+                        <View testID="Empty-State">
+                            <Text>No hay elementos para mostrar</Text>
+                        </View>
+                    }
                 />
-                <View style={styles.actions}>
+                <View style={styles.actions} testID="Submit">
                     <Button
                         text="Agregar"
                         onPress={() => {
