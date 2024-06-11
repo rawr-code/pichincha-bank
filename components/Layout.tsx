@@ -16,7 +16,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
             <View style={styles.container}>
                 <View style={styles.header}>
                     <Ionicons name="card" size={24} color={palette.primary} />
-                    <Text style={styles.title}>Banco Pichincha</Text>
+                    <Text style={styles.title}>Banco Yellow</Text>
                 </View>
                 <View style={styles.container}>{children}</View>
             </View>

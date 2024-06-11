@@ -92,5 +92,3 @@ Contributions are always welcome!
 ## :handshake: Contact
 
 Emmanuel Villegas - [My website](https://www.emmanuelvillegas.com/) - [Contact Us](mailto:emmanuelvillegasgonzalez@gmail.com)
-
-Project Link: [https://github.com/Louis3797/awesome-readme-template](https://github.com/Louis3797/awesome-readme-template)
